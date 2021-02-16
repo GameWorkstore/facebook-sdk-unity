@@ -39,3 +39,6 @@ For Unity Android games, add on facebook settings your packageName (com.example.
 Go to advanced settings and enable "Native or desktop app?" to true. Respond "Is App Secret embedded in the client?" to false.
 Don't include your client secret if not necessary in the app.
 
+Convert SHA1 from GooglePlay console keysigns to KeyHash using this site:
+http://tomeko.net/online_tools/hex_to_base64.php
+
