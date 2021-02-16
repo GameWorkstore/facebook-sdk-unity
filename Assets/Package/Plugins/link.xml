@@ -1,0 +1,5 @@
+<linker>
+  <assembly fullname="Facebook.Unity.Android" ignoreIfMissing="1" preserve="all" />
+  <assembly fullname="Facebook.Unity.IOS" ignoreIfMissing="1" preserve="all" />
+  <assembly fullname="Facebook.Unity.Canvas" ignoreIfMissing="1" preserve="all" />
+</linker>
