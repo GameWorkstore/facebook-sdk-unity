@@ -26,7 +26,7 @@ Original version: [facebook-sdk-for-unity](https://github.com/facebook/facebook-
   {
     "dependencies": {
       "com.google.external-dependency-manager": "1.2.164",
-      "io.elhan.facebook-sdk": "https://github.com/oae/unity-package-facebook-sdk.git#0.1.0",
+      "com.gameworkstore.facebooksdkunity": "git://github.com/GameWorkstore/facebook-sdk-unity?path=Assets/Package"
     }
   }
   ```
