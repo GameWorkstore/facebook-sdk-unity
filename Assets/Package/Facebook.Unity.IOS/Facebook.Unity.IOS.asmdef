@@ -1,0 +1,18 @@
+{
+    "name": "Facebook.Unity.IOS",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bfe2537f612f04df8aa7aeb71c2e2327"
+    ],
+    "includePlatforms": [
+        "iOS"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
