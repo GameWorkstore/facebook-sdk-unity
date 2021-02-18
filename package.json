@@ -1,0 +1,15 @@
+{
+  "name": "com.gameworkstore.facebooksdkunity",
+  "version": "9.0.3",
+  "displayName": "GameWorkstore Facebook SDK (Unofficial)",
+  "description": "GameWorkstore Facebook SDK (Unofficial)",
+  "unity": "2019.1",
+  "author": {
+    "name": "Game Workstore",
+    "email": "contact@gameworkstore.com",
+    "url": "https://gameworkstore.com"
+  },
+  "dependencies": {
+    "com.google.external-dependency-manager": "1.2.164"
+  }
+}
