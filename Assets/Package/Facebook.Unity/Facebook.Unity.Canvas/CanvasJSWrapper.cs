@@ -18,6 +18,9 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+#if UNITY_WEBGL && GAMEWORKSTORE
+
 namespace Facebook.Unity.Canvas
 {
     using System.Collections.Generic;
@@ -98,3 +101,5 @@ namespace Facebook.Unity.Canvas
         private static extern void initScreenPosition();
     }
 }
+
+#endif

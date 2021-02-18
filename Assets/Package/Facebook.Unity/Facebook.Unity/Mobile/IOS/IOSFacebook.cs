@@ -18,12 +18,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity.Mobile.IOS
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+#if !GAMEWORKSTORE
     using System.Reflection;
+#endif
 
     internal class IOSFacebook : MobileFacebook
     {
@@ -371,10 +375,18 @@ namespace Facebook.Unity.Mobile.IOS
 
         private static IIOSWrapper GetIOSWrapper()
         {
+#if GAMEWORKSTORE
+#if UNITY_IOS
+            return Activator.CreateInstance<Facebook.Unity.IOS.IOSWrapper>();
+#else
+            return null;
+#endif
+#else
             Assembly assembly = Assembly.Load("Facebook.Unity.IOS");
             Type type = assembly.GetType("Facebook.Unity.IOS.IOSWrapper");
             IIOSWrapper iosWrapper = (IIOSWrapper)Activator.CreateInstance(type);
             return iosWrapper;
+#endif
         }
 
         private static NativeDict MarshallDict(Dictionary<string, object> dict)

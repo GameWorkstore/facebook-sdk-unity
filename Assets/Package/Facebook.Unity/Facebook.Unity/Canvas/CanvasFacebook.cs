@@ -18,14 +18,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity.Canvas
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+#if !GAMEWORKSTORE
     using System.IO;
     using System.Reflection;
     using System.Runtime.InteropServices;
+#endif
 
     internal sealed class CanvasFacebook : FacebookBase, ICanvasFacebookImplementation
     {
@@ -54,10 +58,18 @@ namespace Facebook.Unity.Canvas
 
         private static ICanvasJSWrapper GetCanvasJSWrapper()
         {
+#if GAMEWORKSTORE
+#if UNITY_WEBGL
+            return Activator.CreateInstance<Facebook.Unity.Canvas.CanvasJSWrapper>();
+#else
+            return null;
+#endif
+#else
             Assembly assembly = Assembly.Load("Facebook.Unity.Canvas");
             Type type = assembly.GetType("Facebook.Unity.Canvas.CanvasJSWrapper");
             ICanvasJSWrapper canvasJSWrapper = (ICanvasJSWrapper)Activator.CreateInstance(type);
             return canvasJSWrapper;
+#endif
         }
 
         public override bool LimitEventUsage { get; set; }

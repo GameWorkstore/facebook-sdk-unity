@@ -18,13 +18,17 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity.Mobile.Android
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Globalization;
+#if !GAMEWORKSTORE
     using System.Reflection;
+#endif
     using UnityEngine;
 
     internal sealed class AndroidFacebook : MobileFacebook
@@ -656,10 +660,18 @@ namespace Facebook.Unity.Mobile.Android
 
         private static IAndroidWrapper GetAndroidWrapper()
         {
+#if GAMEWORKSTORE
+#if UNITY_ANDROID
+            return Activator.CreateInstance<Facebook.Unity.Android.AndroidWrapper>();
+#else
+            return null;
+#endif
+#else
             Assembly assembly = Assembly.Load("Facebook.Unity.Android");
             Type type = assembly.GetType("Facebook.Unity.Android.AndroidWrapper");
             IAndroidWrapper javaClass = (IAndroidWrapper)Activator.CreateInstance(type);
             return javaClass;
+#endif
         }
 
         private void CallFB(string method, string args)

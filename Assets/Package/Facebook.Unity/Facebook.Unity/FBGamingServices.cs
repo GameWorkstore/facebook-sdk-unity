@@ -18,12 +18,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+#if !GAMEWORKSTORE
     using Facebook.Unity.Gameroom;
+#endif
     using Facebook.Unity.Canvas;
     using Facebook.Unity.Editor;
     using Facebook.Unity.Mobile;

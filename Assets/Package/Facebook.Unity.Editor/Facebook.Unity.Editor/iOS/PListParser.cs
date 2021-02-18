@@ -18,6 +18,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity.Editor
 {
     using System;
@@ -58,7 +60,11 @@ namespace Facebook.Unity.Editor
         {
             this.filePath = fullPath;
             XmlReaderSettings settings = new XmlReaderSettings();
+#if GAMEWORKSTORE
+            settings.DtdProcessing = DtdProcessing.Parse;
+#else
             settings.ProhibitDtd = false;
+#endif
             XmlReader plistReader = XmlReader.Create(this.filePath, settings);
 
             XDocument doc = XDocument.Load(plistReader);

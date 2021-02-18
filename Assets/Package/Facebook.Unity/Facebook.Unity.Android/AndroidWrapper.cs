@@ -17,13 +17,28 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+#define GAMEWORKSTORE
+#if UNITY_ANDROID && GAMEWORKSTORE
 
-namespace Facebook.Unity.Gameroom
+namespace Facebook.Unity.Android
 {
-    internal interface IGameroomFacebook : IPayFacebook, IFacebook
-    {
-        void PayPremium(FacebookDelegate<IPayResult> callback);
+    using Facebook.Unity.Mobile.Android;
+    using UnityEngine;
 
-        void HasLicense(FacebookDelegate<IHasLicenseResult> callback);
+    internal class AndroidWrapper : IAndroidWrapper
+    {
+        private const string FacebookJavaClassName = "com.facebook.unity.FB";
+        private AndroidJavaClass facebookJavaClass = new AndroidJavaClass(FacebookJavaClassName);
+
+        public T CallStatic<T>(string methodName)
+        {
+            return this.facebookJavaClass.CallStatic<T>(methodName);
+        }
+
+        public void CallStatic(string methodName, params object[] args)
+        {
+            this.facebookJavaClass.CallStatic(methodName, args);
+        }
     }
 }
+#endif

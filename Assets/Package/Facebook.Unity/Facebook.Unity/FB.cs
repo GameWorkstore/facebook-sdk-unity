@@ -18,12 +18,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#define GAMEWORKSTORE
+
 namespace Facebook.Unity
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+#if !GAMEWORKSTORE
     using Facebook.Unity.Gameroom;
+#endif
     using Facebook.Unity.Canvas;
     using Facebook.Unity.Editor;
     using Facebook.Unity.Mobile;
@@ -308,6 +312,7 @@ namespace Facebook.Unity
                             ComponentFactory.GetComponent<CodelessCrawler>();
                             ComponentFactory.GetComponent<CodelessUIInteractEvent>();
                             break;
+#if !GAMEWORKSTORE
                         case FacebookUnityPlatform.Gameroom:
                             FB.OnDLLLoadedDelegate = delegate
                             {
@@ -315,6 +320,7 @@ namespace Facebook.Unity
                             };
                             ComponentFactory.GetComponent<GameroomFacebookLoader>();
                             break;
+#endif
                         default:
                             throw new NotSupportedException("The facebook sdk does not support this platform");
                     }
@@ -1108,6 +1114,7 @@ namespace Facebook.Unity
             }
         }
 
+#if !GAMEWORKSTORE
         public sealed class Gameroom
         {
             private static IGameroomFacebook GameroomFacebookImpl
@@ -1136,6 +1143,7 @@ namespace Facebook.Unity
                 Gameroom.GameroomFacebookImpl.HasLicense(callback);
             }
         }
+#endif
 
         internal abstract class CompiledFacebookLoader : MonoBehaviour
         {
