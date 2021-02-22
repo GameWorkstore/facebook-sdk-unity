@@ -16,11 +16,12 @@ jobs:
         run: |
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
-          git subtree split -P Assets/Package/ -b upm
-          git checkout upm
-          git checkout main -- README.md
-          git add README.md
+          # Update README
+          cp -rf README.md Assets/Package/README.md
+          git add Assets/Package/README.md
           git commit -m "Update README"
+
+          git subtree split -P Assets/Package/ -b upm
           ls
       - name: Push changes
         uses: ad-m/github-push-action@master
