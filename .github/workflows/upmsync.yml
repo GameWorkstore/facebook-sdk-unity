@@ -18,6 +18,7 @@ jobs:
           git config --local user.name "game-workstore-bot"
           git subtree split -P Assets/Package/ -b upm
           git checkout upm
+          git checkout main -- README.md
           ls
       - name: Push changes
         uses: ad-m/github-push-action@master
