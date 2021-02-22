@@ -20,6 +20,7 @@ jobs:
           git checkout upm
           git checkout main -- README.md
           git add README.md
+          git commit -m "Update README"
           ls
       - name: Push changes
         uses: ad-m/github-push-action@master
