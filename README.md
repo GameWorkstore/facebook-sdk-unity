@@ -33,6 +33,9 @@ Original version: [facebook-sdk-for-unity](https://github.com/facebook/facebook-
 
 > For the official plugin, check out the [original repository](https://github.com/facebook/facebook-sdk-for-unity)
 
+for update package for a newer version, install UpmGitExtension and update on [ Window > Package Manager ]!
+> https://github.com/mob-sakai/UpmGitExtension
+
 # FAQ
 
 ## About Facebook Developer Page Settings

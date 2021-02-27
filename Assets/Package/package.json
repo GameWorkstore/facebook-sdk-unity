@@ -1,9 +1,11 @@
 {
   "name": "com.gameworkstore.facebooksdkunity",
-  "version": "9.0.3",
-  "displayName": "GameWorkstore Facebook SDK (Unofficial)",
-  "description": "GameWorkstore Facebook SDK (Unofficial)",
+  "version": "9.0.4",
+  "displayName": "GameWorkstore Facebook SDK",
+  "description": "GameWorkstore Facebook SDK",
   "unity": "2019.1",
+  "icon": ".icon.png",
+  "keywords": [ "facebook", "sdk", "unity" ],
   "author": {
     "name": "Game Workstore",
     "email": "contact@gameworkstore.com",
