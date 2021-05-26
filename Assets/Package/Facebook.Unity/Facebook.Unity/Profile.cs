@@ -36,6 +36,13 @@ namespace Facebook.Unity
         /// <param name="email">Email.</param>
         /// <param name="imageURL">Image URL.</param>
         /// <param name="linkURL">Link URL.</param>
+        /// <param name="friendIDs">A list of identifiers for the user's friends.</param>
+        /// <param name="birthday">User's birthday</param>
+        /// <param name="ageRange">Age Range for the User</param>
+        /// <param name="hometown">Home Town</param>
+        /// <param name="location">Location</param>
+        /// <param name="gender">Gender</param>
+
         internal Profile(
             string userID,
             string firstName,
@@ -44,7 +51,13 @@ namespace Facebook.Unity
             string name,
             string email,
             string imageURL,
-            string linkURL)
+            string linkURL,
+            string[] friendIDs,
+            string birthday,
+            UserAgeRange ageRange,
+            FBLocation hometown,
+            FBLocation location,
+            string gender)
         {
             this.UserID = userID;
             this.FirstName = firstName;
@@ -54,6 +67,18 @@ namespace Facebook.Unity
             this.Email = email;
             this.ImageURL = imageURL;
             this.LinkURL = linkURL;
+            this.FriendIDs = friendIDs ?? new string[] { };
+            long birthdayTimestamp;
+            if (long.TryParse(birthday, out birthdayTimestamp))
+            {
+                this.Birthday = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                    .AddMilliseconds(birthdayTimestamp * 1000)
+                    .ToLocalTime();
+            }
+            this.AgeRange = ageRange;
+            this.Hometown = hometown;
+            this.Location = location;
+            this.Gender = gender;
         }
 
         /// <summary>
@@ -105,6 +130,42 @@ namespace Facebook.Unity
         public string LinkURL { get; private set; }
 
         /// <summary>
+        /// Gets the list of identifiers for the user's friends.
+        /// </summary>
+        /// <value>The list of identifiers for the user's friends.</value>
+        public string[] FriendIDs { get; private set; }
+
+        /// <summary>
+        /// Gets the user's birthday.
+        /// </summary>
+        /// <value>The user's birthday.</value>
+        public DateTime? Birthday { get; private set; }
+
+        /// <summary>
+        /// Gets the user's age range.
+        /// </summary>
+        /// <value>The user's age range.</value>
+        public UserAgeRange AgeRange { get; private set; }
+
+        /// <summary>
+        /// Gets the user's hometown
+        /// </summary>
+        /// <value>The user's hometown</value>
+        public FBLocation Hometown { get; private set; }
+
+        /// <summary>
+        /// Gets the user's location
+        /// </summary>
+        /// <value>The user's location </value>
+        public FBLocation Location { get; private set; }
+
+        /// <summary>
+        /// Gets the user's gender
+        /// </summary>
+        /// <value>The user's gender</value>
+        public string Gender { get; private set; }
+
+        /// <summary>
         /// Returns a <see cref="System.String"/> that represents the current <see cref="Facebook.Unity.Profile"/>.
         /// </summary>
         /// <returns>A <see cref="System.String"/> that represents the current <see cref="Facebook.Unity.Profile"/>.</returns>
@@ -123,8 +184,13 @@ namespace Facebook.Unity
                     { "Email", this.Email },
                     { "ImageURL", this.ImageURL},
                     { "LinkURL", this.LinkURL },
+                    { "FriendIDs", String.Join(",", this.FriendIDs) },
+                    { "Birthday", this.Birthday?.ToShortDateString()},
+                    { "AgeRange", this.AgeRange?.ToString()},
+                    { "Hometown", this.Hometown?.ToString() },
+                    { "Location", this.Location?.ToString() },
+                    { "Gender", this.Gender },
                 });
         }
     }
 }
-

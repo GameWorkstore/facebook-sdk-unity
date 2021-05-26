@@ -63,6 +63,8 @@ namespace Facebook.Unity.Mobile
 
         public abstract void SetDataProcessingOptions(IEnumerable<string> options, int country, int state);
 
+        public abstract void EnableProfileUpdatesOnAccessTokenChange(bool enable);
+
         public abstract void LoginWithTrackingPreference(
             string tracking,
             IEnumerable<string> permissions,
@@ -225,6 +227,31 @@ namespace Facebook.Unity.Mobile
         public void OnPostSessionScoreComplete(ResultContainer resultContainer)
         {
             var result = new SessionScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnPostTournamentScoreComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnGetTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnShareTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnCreateTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
         }
 
         public void OnOpenAppStoreComplete(ResultContainer resultContainer)
@@ -337,6 +364,33 @@ namespace Facebook.Unity.Mobile
         public virtual void PostSessionScore(
             int score,
             FacebookDelegate<ISessionScoreResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void PostTournamentScore(int score, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void GetTournament(FacebookDelegate<ITournamentResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void ShareTournament(Dictionary<string, string> data, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void CreateTournament(
+            int initialScore,
+            string title,
+            string imageBase64DataUrl,
+            string sortOrder,
+            string scoreFormat,
+            Dictionary<string, string> data,
+            FacebookDelegate<ITournamentResult> callback)
         {
             throw new NotImplementedException();
         }

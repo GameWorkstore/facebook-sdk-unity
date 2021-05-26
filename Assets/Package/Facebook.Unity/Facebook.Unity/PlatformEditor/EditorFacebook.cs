@@ -107,6 +107,11 @@ namespace Facebook.Unity.Editor
                 permissions.ToCommaSeparateList());
         }
 
+        public void EnableProfileUpdatesOnAccessTokenChange(bool enable)
+        {
+            FacebookLogger.Log("Pew! Pretending to enable Profile updates on access token change.  Doesn't actually work in the editor");
+        }
+
         public void LoginWithTrackingPreference(
             string tracking,
             IEnumerable<string> permissions,
@@ -459,6 +464,31 @@ namespace Facebook.Unity.Editor
         public void OnPostSessionScoreComplete(ResultContainer resultContainer)
         {
             var result = new SessionScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnPostTournamentScoreComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnGetTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnShareTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentScoreResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
+        }
+
+        public void OnCreateTournamentComplete(ResultContainer resultContainer)
+        {
+            var result = new TournamentResult(resultContainer);
+            CallbackManager.OnFacebookResponse(result);
         }
 
         public void OnOpenAppStoreComplete(ResultContainer resultContainer)
@@ -594,6 +624,45 @@ namespace Facebook.Unity.Editor
         {
             var result = new Dictionary<string, object>();
             result["success"] = "";
+            result[Constants.CallbackIdKey] = this.CallbackManager.AddFacebookDelegate(callback);
+        }
+
+        public void PostTournamentScore(int score, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            var result = new Dictionary<string, object>();
+            result["success"] = "";
+            result[Constants.CallbackIdKey] = this.CallbackManager.AddFacebookDelegate(callback);
+        }
+
+        public void GetTournament(FacebookDelegate<ITournamentResult> callback)
+        {
+            var result = new Dictionary<string, object>();
+            result["tournamentId"] = "123";
+            result["contextId"] = "456";
+            result["endTime"] = "456";
+            result["data"] = new Dictionary<string, string>();
+            result[Constants.CallbackIdKey] = this.CallbackManager.AddFacebookDelegate(callback);
+        }
+
+        public void ShareTournament(Dictionary<string, string> data, FacebookDelegate<ITournamentResult> callback)
+        {
+            var result = new Dictionary<string, object>();
+            result["success"] = "";
+            result[Constants.CallbackIdKey] = this.CallbackManager.AddFacebookDelegate(callback);
+        }
+
+        public void CreateTournament(
+            int initialScore,
+            string title,
+            string imageBase64DataUrl,
+            Dictionary<string, string> data,
+            FacebookDelegate<ITournamentResult> callback)
+        {
+            var result = new Dictionary<string, object>();
+            result["tournamentId"] = "123";
+            result["contextId"] = "456";
+            result["endTime"] = "456";
+            result["data"] = new Dictionary<string, string>();
             result[Constants.CallbackIdKey] = this.CallbackManager.AddFacebookDelegate(callback);
         }
 
