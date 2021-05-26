@@ -158,6 +158,15 @@ namespace Facebook.Unity.Mobile.Android
             this.userID = this.androidWrapper.CallStatic<string>("GetUserID");
         }
 
+        public override void EnableProfileUpdatesOnAccessTokenChange(bool enable)
+        {
+            if (Debug.isDebugBuild)
+            {
+                Debug.Log("This function is only implemented on iOS.");
+            }
+            return;
+        }
+
         public override void LoginWithTrackingPreference(
             string tracking,
             IEnumerable<string> permissions,
@@ -221,6 +230,9 @@ namespace Facebook.Unity.Mobile.Android
                     string email;
                     string imageURL;
                     string linkURL;
+                    string friendIDs;
+                    string birthday;
+                    string gender;
                     profile.TryGetValue("userID", out id);
                     profile.TryGetValue("firstName", out firstName);
                     profile.TryGetValue("middleName", out middleName);
@@ -229,7 +241,28 @@ namespace Facebook.Unity.Mobile.Android
                     profile.TryGetValue("email", out email);
                     profile.TryGetValue("imageURL", out imageURL);
                     profile.TryGetValue("linkURL", out linkURL);
-                    return new Profile(id, firstName, middleName, lastName, name, email, imageURL, linkURL);
+                    profile.TryGetValue("friendIDs", out friendIDs);
+                    profile.TryGetValue("birthday", out birthday);
+                    profile.TryGetValue("gender", out gender);
+
+                    UserAgeRange ageRange = UserAgeRange.AgeRangeFromDictionary(profile);
+                    FBLocation hometown = FBLocation.FromDictionary("hometown", profile);
+                    FBLocation location = FBLocation.FromDictionary("location", profile);
+                    return new Profile(
+                        userID,
+                        firstName,
+                        middleName,
+                        lastName,
+                        name,
+                        email,
+                        imageURL,
+                        linkURL,
+                        friendIDs?.Split(','),
+                        birthday,
+                        ageRange,
+                        hometown,
+                        location,
+                        gender);
                 }
                 catch (Exception)
                 {
@@ -641,6 +674,71 @@ namespace Facebook.Unity.Mobile.Android
             postSessionScore.Call(args);
         }
 
+        public override void PostTournamentScore(int score, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            MethodArguments args = new MethodArguments();
+            args.AddString("score", score.ToString());
+
+            var postTournamentScore = new JavaMethodCall<ITournamentScoreResult>(
+                this,
+                "PostTournamentScore")
+            {
+                Callback = callback
+            };
+            postTournamentScore.Call(args);
+        }
+
+        public override void GetTournament(FacebookDelegate<ITournamentResult> callback)
+        {
+            var getTournament = new JavaMethodCall<ITournamentResult>(
+                this,
+                "GetTournament")
+            {
+                Callback = callback
+            };
+            getTournament.Call();
+        }
+
+        public override void CreateTournament(
+            int initialScore,
+            string title,
+            string imageBase64DataUrl,
+            string sortOrder,
+            string scoreFormat,
+            Dictionary<string, string> data,
+            FacebookDelegate<ITournamentResult> callback)
+        {
+            MethodArguments args = new MethodArguments();
+
+            args.AddString("initialScore", initialScore.ToString());
+            args.AddString("title", title);
+            args.AddString("imageBase64DataUrl", imageBase64DataUrl);
+            args.AddString("sortOrder", sortOrder);
+            args.AddString("scoreFormat", scoreFormat);
+            args.AddDictionary("data", data.ToDictionary( pair => pair.Key, pair => (object) pair.Value));
+            var createTournament = new JavaMethodCall<ITournamentResult>(
+                this,
+                "CreateTournament")
+            {
+                Callback = callback
+            };
+            createTournament.Call(args);
+        }
+
+        public override void ShareTournament(Dictionary<string, string> data, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            MethodArguments args = new MethodArguments();
+            args.AddDictionary("data", data.ToDictionary(pair => pair.Key, pair => (object)pair.Value));
+
+            var shareTournament = new JavaMethodCall<ITournamentScoreResult>(
+                this,
+                "ShareTournament")
+            {
+                Callback = callback
+            };
+            shareTournament.Call(args);
+        }
+
         public override void OpenAppStore(
             FacebookDelegate<IOpenAppStoreResult> callback)
         {
@@ -662,7 +760,7 @@ namespace Facebook.Unity.Mobile.Android
         {
 #if GAMEWORKSTORE
 #if UNITY_ANDROID
-            return Activator.CreateInstance<Facebook.Unity.Android.AndroidWrapper>();
+            return new Facebook.Unity.Android.AndroidWrapper();
 #else
             return null;
 #endif

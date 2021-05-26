@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.gameworkstore.automation": {
+      "version": "git://github.com/GameWorkstore/automation#1.0.8",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.gameworkstore.patterns": "1.1.0"
+      },
+      "hash": "5823a7ba4ac0ff95f0465910f3a0c502132757de"
+    },
+    "com.gameworkstore.patterns": {
+      "version": "git://github.com/GameWorkstore/patterns#1.1.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "acec284154b11e5fa7193b0adfb4c52f682b49f0"
+    },
     "com.google.external-dependency-manager": {
       "version": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.165",
       "depth": 0,
@@ -22,7 +38,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.7",
+      "version": "2.0.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -72,7 +88,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.toolchain.macos-x86_64-linux-x86_64": {
-      "version": "0.1.20-preview",
+      "version": "0.1.21-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {

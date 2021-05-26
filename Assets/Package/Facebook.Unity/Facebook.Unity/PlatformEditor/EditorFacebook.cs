@@ -690,6 +690,16 @@ namespace Facebook.Unity.Editor
             throw new NotSupportedException();
         }
 
+        public void ShareTournament(Dictionary<string, string> data, FacebookDelegate<ITournamentScoreResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateTournament(int initialScore, string title, string imageBase64DataUrl, string sortOrder, string scoreFormat, Dictionary<string, string> data, FacebookDelegate<ITournamentResult> callback)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

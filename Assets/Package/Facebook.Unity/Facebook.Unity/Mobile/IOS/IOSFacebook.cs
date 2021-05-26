@@ -152,6 +152,11 @@ namespace Facebook.Unity.Mobile.IOS
             this.userID = this.iosWrapper.FBGetUserID();
         }
 
+        public override void EnableProfileUpdatesOnAccessTokenChange(bool enable)
+        {
+            this.iosWrapper.EnableProfileUpdatesOnAccessTokenChange(enable);
+        }
+
         public override void LoginWithTrackingPreference(
             string tracking,
             IEnumerable<string> permissions,
@@ -377,7 +382,7 @@ namespace Facebook.Unity.Mobile.IOS
         {
 #if GAMEWORKSTORE
 #if UNITY_IOS
-            return Activator.CreateInstance<Facebook.Unity.IOS.IOSWrapper>();
+            return new Facebook.Unity.IOS.IOSWrapper();
 #else
             return null;
 #endif
