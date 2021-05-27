@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameName: FIntegrationSDK
   GameVersionWriterConfig:
-    Enabled: 1
+    Enabled: 0
     Path: Scripts/Version/
     Namespace: Unset.Namespace
   ViewBuildAndroid: 1
   BuildAndroid:
     UseCustomScenes: 0
-    Development: 0
+    Development: 1
     Scenes:
       List: []
     UseKeystore: 0
-    BuildAPK: 0
-    BuildAAB: 1
+    BuildAPK: 1
+    BuildAAB: 0
     ScriptingBackend: 1
     KeyStoreSettings:
       KeystorePath: 
