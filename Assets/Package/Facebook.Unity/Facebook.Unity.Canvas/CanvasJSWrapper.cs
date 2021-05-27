@@ -18,8 +18,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#define GAMEWORKSTORE
-#if UNITY_WEBGL && GAMEWORKSTORE
+#if UNITY_WEBGL
 
 namespace Facebook.Unity.Canvas
 {
@@ -27,7 +26,7 @@ namespace Facebook.Unity.Canvas
     using System.Runtime.InteropServices;
     using UnityEngine;
 
-    public class CanvasJSWrapper : ICanvasJSWrapper
+    internal class CanvasJSWrapper : ICanvasJSWrapper
     {
         public string GetSDKVersion()
         {
@@ -101,5 +100,4 @@ namespace Facebook.Unity.Canvas
         private static extern void initScreenPosition();
     }
 }
-
 #endif

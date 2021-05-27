@@ -17,7 +17,7 @@ MonoBehaviour:
     Enabled: 1
     Path: Scripts/Version/
     Namespace: Unset.Namespace
-  ViewBuildAndroid: 0
+  ViewBuildAndroid: 1
   BuildAndroid:
     UseCustomScenes: 0
     Development: 0

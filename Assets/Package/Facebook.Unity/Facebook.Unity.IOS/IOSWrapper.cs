@@ -17,8 +17,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-#define GAMEWORKSTORE
-#if UNITY_IOS && GAMEWORKSTORE
+#if UNITY_IOS
 
 namespace Facebook.Unity.IOS
 {
@@ -40,6 +39,11 @@ namespace Facebook.Unity.IOS
                 frictionlessRequests,
                 urlSuffix,
                 unityUserAgentSuffix);
+        }
+
+        public void EnableProfileUpdatesOnAccessTokenChange(bool enable)
+        {
+            IOSWrapper.IOSFBEnableProfileUpdatesOnAccessTokenChange(enable);
         }
 
         public void LoginWithTrackingPreference(
@@ -285,6 +289,9 @@ namespace Facebook.Unity.IOS
                 string email;
                 string imageURL;
                 string linkURL;
+                string friendIDs;
+                string birthday;
+                string gender;
                 profile.TryGetValue("userID", out userID);
                 profile.TryGetValue("firstName", out firstName);
                 profile.TryGetValue("middleName", out middleName);
@@ -293,7 +300,28 @@ namespace Facebook.Unity.IOS
                 profile.TryGetValue("email", out email);
                 profile.TryGetValue("imageURL", out imageURL);
                 profile.TryGetValue("linkURL", out linkURL);
-                return new Profile(userID, firstName, middleName, lastName, name, email, imageURL, linkURL);
+                profile.TryGetValue("friendIDs", out friendIDs);
+                profile.TryGetValue("birthday", out birthday);
+                profile.TryGetValue("gender", out gender);
+
+                UserAgeRange ageRange = UserAgeRange.AgeRangeFromDictionary(profile);
+                FBLocation hometown = FBLocation.FromDictionary("hometown", profile);
+                FBLocation location = FBLocation.FromDictionary("location", profile);
+                return new Profile(
+                    userID,
+                    firstName,
+                    middleName,
+                    lastName,
+                    name,
+                    email,
+                    imageURL,
+                    linkURL,
+                    friendIDs?.Split(','),
+                    birthday,
+                    ageRange,
+                    hometown,
+                    location,
+                    gender);
             }
             catch (Exception)
             {
@@ -341,6 +369,9 @@ namespace Facebook.Unity.IOS
             bool frictionlessRequests,
             string urlSuffix,
             string unityUserAgentSuffix);
+
+        [DllImport("__Internal")]
+        private static extern void IOSFBEnableProfileUpdatesOnAccessTokenChange(bool enable);
 
         [DllImport("__Internal")]
         private static extern void IOSFBLogInWithReadPermissions(
@@ -488,5 +519,4 @@ namespace Facebook.Unity.IOS
         private static extern string IOSFBCurrentProfile();
     }
 }
-
 #endif
