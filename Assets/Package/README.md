@@ -6,35 +6,20 @@ Original version: [facebook-sdk-for-unity](https://github.com/facebook/facebook-
 
 # Installation
 
-- Add the Google Scope:
-  
-  ```json
-  "scopedRegistries": [
-    {
-      "name": "Game Package Registry by Google",
-      "url": "https://unityregistry-pa.googleapis.com",
-      "scopes": [
-        "com.google"
-      ]
-    }
-  ]
-  ```
-
 - Add following dependency to `Packages/manifest.json` in your project;
 
   ```json
   {
     "dependencies": {
-      "com.google.external-dependency-manager": "1.2.164",
-      "com.gameworkstore.facebooksdkunity": "git://github.com/GameWorkstore/facebook-sdk-unity?path=Assets/Package"
+      "com.google.external-dependency-manager": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.165",
+      "com.gameworkstore.facebooksdkunity": "git://github.com/GameWorkstore/facebook-sdk-unity#9.2.0000"
     }
   }
   ```
 
 > For the official plugin, check out the [original repository](https://github.com/facebook/facebook-sdk-for-unity)
 
-for update package for a newer version, install UpmGitExtension and update on [ Window > Package Manager ]!
-> https://github.com/mob-sakai/UpmGitExtension
+for update package for a newer version, change the #version at the end of the link to the release/tag on this page.
 
 # FAQ
 
