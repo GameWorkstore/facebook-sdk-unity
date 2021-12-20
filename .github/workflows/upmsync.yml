@@ -13,12 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        if: false
+
       - name: Config
         run: |
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
 
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: facebook/facebook-sdk-for-unity
+
+      - name: List
+        run: |
+          ls
+
       - name: Download Package
+        if: false
         env:
           file: content.tar.gz
         run: |
