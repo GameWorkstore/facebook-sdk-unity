@@ -43,9 +43,11 @@ jobs:
           mkdir ${{ env.target }}
           cp -rf facebook/* ${{ env.target }}
           cd base
-          git add --a
-          git commit -m "Updated README.md"
-          git push origin
+          if [[ `git status --porcelain` ]]; then
+              git add --a
+              git commit -m "Updated Facebook Source"
+              git push origin
+          fi
 
   disabled:
     runs-on: ubuntu-latest
