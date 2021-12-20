@@ -39,14 +39,15 @@ jobs:
           rm -rf Facebook.Unity.Tests
           # PROPERTIES
           rm -rf Facebook.Unity.Android/Properties
-          rm -rf Facebook.Unity.Android.StrippingHack/Properties
+          rm -rf Facebook.Unity.Android.StrippingHack
           rm -rf Facebook.Unity.Canvas/Properties
           rm -rf Facebook.Unity.Editor/Properties
           rm -rf Facebook.Unity.Gameroom/Properties
           rm -rf Facebook.Unity.IOS/Properties
-          rm -rf Facebook.Unity.IOS.StrippingHack/Properties
+          rm -rf Facebook.Unity.IOS.StrippingHack
           rm -rf Facebook.Unity.IOS.Settings/Properties
           rm -rf Facebook.Unity.Settings/Properties
+          rm -rf com.parse.bolts.bolts-tasks-1.4.0.jar.meta
           ls
 
       - name: Copy
