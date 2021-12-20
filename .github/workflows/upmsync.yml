@@ -12,11 +12,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           path: base
 
-      - name: Check out my other private repo
+      - name: Checkout Facebook
         uses: actions/checkout@v2
         with:
           repository: facebook/facebook-sdk-for-unity
@@ -35,12 +36,16 @@ jobs:
           ls
 
       - name: Copy
+        env:
+          target: base/Assets/Package/Source/
         run: |
-          rm -rf base/Staging/
-          mkdir base/Staging/
-          cp -rf facebook/* base/Staging/
-          cd base/Staging
-          ls
+          rm -rf ${{ env.target }}
+          mkdir ${{ env.target }}
+          cp -rf facebook/* ${{ env.target }}
+          cd base
+          git add --a
+          git commit -m "Updated README.md"
+          git push origin
 
   disabled:
     runs-on: ubuntu-latest
