@@ -18,11 +18,8 @@ jobs:
           path: base
 
       - name: Checkout Facebook
-        uses: actions/checkout@v2
-        with:
-          repository: facebook/facebook-sdk-for-unity
-          ref: sdk-version-${{ env.version }}
-          path: facebook
+        run: |
+
 
       - name: Config
         run: |
@@ -33,16 +30,18 @@ jobs:
       - name: List
         run: |
           cd facebook
+          rm -rf UnitySDK/Assets/PlayServicesResolver
+          rm -rf Facebook.Unity.Tests
+          rm -rf com.parse.bolts.bolts-tasks-1.4.0.jar.meta
           ls
 
       - name: Copy
         env:
           target: base/Assets/Package/Source/
         run: |
-          rm -rf ${{ env.target }}
-          mkdir ${{ env.target }}
+          #rm -rf ${{ env.target }}
+          #mkdir ${{ env.target }}
           cp -rf facebook/* ${{ env.target }}
-          rm -rf ${{ env.target }}/UnitySDK/Assets/PlayServicesResolver
         
       - name: Commit
         run: |
