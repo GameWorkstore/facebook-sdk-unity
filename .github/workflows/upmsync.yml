@@ -24,8 +24,8 @@ jobs:
           mkdir Staging
           cd Staging
           curl ${{ env.base }}-${{ env.version }}.tar.gz --output content.tar.gz
-          tar -xvzf content.tgz
-          rm content.tgz
+          tar -xvzf content.tar.gz
+          rm content.tar.gz
           ls
 
   disabled:
