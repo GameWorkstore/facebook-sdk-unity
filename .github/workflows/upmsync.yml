@@ -28,7 +28,7 @@ jobs:
           cd Staging
           curl ${{ env.base }}-${{ env.version }}.tar.gz --output ${{ env.file }}
           ls
-          tar -xvf ${{ env.file }}
+          tar -vxzf ${{ env.file }}
           ls
 
   disabled:
