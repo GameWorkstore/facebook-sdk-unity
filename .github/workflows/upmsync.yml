@@ -25,7 +25,8 @@ jobs:
           mkdir Staging
           cd Staging
           curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
-          unzip content.zip
+          ls
+          tar -xvf content.zip
           ls
 
   disabled:
