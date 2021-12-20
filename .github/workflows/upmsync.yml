@@ -67,12 +67,12 @@ jobs:
           rm -rf ${{ env.target }}/Facebook.Unity.IOS/Facebook.Unity.IOS
           rm -rf ${{ env.target }}/Facebook.Unity.Settings/Facebook.Unity.Settings
           
-          mkdir ${{ env.target }}/Facebook.Unity.Android/
-          mkdir ${{ env.target }}/Facebook.Unity.Canvas/
-          mkdir ${{ env.target }}/Facebook.Unity.Editor/
-          mkdir ${{ env.target }}/Facebook.Unity.Gameroom/
-          mkdir ${{ env.target }}/Facebook.Unity.IOS/
-          mkdir ${{ env.target }}/Facebook.Unity.Settings/
+          mkdir -p ${{ env.target }}/Facebook.Unity.Android/
+          mkdir -p ${{ env.target }}/Facebook.Unity.Canvas/
+          mkdir -p ${{ env.target }}/Facebook.Unity.Editor/
+          mkdir -p ${{ env.target }}/Facebook.Unity.Gameroom/
+          mkdir -p ${{ env.target }}/Facebook.Unity.IOS/
+          mkdir -p ${{ env.target }}/Facebook.Unity.Settings/
 
           mv facebook/Facebook.Unity.Android ${{ env.target }}/
           mv facebook/Facebook.Unity.Android ${{ env.target }}/
@@ -82,7 +82,7 @@ jobs:
           mv facebook/Facebook.Unity.Settings/ ${{ env.target }}/
 
           rm -rf ${{ env.target }}/Content
-          mkdir ${{ env.target }}/Content
+          mkdir -p ${{ env.target }}/Content
           cp -rf facebook/* ${{ env.target }}/Content
           
       - name: Commit
