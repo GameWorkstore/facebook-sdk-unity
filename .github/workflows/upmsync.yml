@@ -53,7 +53,7 @@ jobs:
           target: base/Assets/Package/Source/
         run: |
           rm -rf ${{ env.target }}
-          rm -rf ${{ env.examples }}
+          rm -rf base/Assets/Examples
           
           mkdir ${{ env.target }}
 
