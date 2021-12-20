@@ -42,8 +42,8 @@ jobs:
         env:
           target: base/Assets/Package/Source/
         run: |
-          #rm -rf ${{ env.target }}
-          #mkdir ${{ env.target }}
+          rm -rf ${{ env.target }}
+          mkdir ${{ env.target }}
           cp -rf facebook/* ${{ env.target }}
         
       - name: Commit
