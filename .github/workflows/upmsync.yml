@@ -23,8 +23,6 @@ jobs:
           sudo apt-get install unzip
           rm -rf Staging
           curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
-          unzip content.zip -d Staging
-          rm content.zip
           ls
 
   disabled:
