@@ -24,31 +24,22 @@ jobs:
           path: facebook
 
       - name: Config
-        if: false
         run: |
+          cd base
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
 
       - name: List
         run: |
+          cd facebook
           ls
 
-      - name: Download Package
-        if: false
-        env:
-          file: content.tar.gz
+      - name: Copy
         run: |
-          sudo apt-get install unzip
-          rm -rf Staging
-          mkdir Staging
-          cd Staging
-          #curl ${{ env.base }}-${{ env.version }}.tar.gz --output ${{ env.file }}
-          wget ${{ env.base }}-${{ env.version }}.tar.gz -o ${{ env.file }}
+          cp -rf facebook/* base/Staging/
+          cd base/Staging
           ls
-          file ${{ env.file }}
-          tar -vxf ${{ env.file }}
-          ls
-
+          
   disabled:
     runs-on: ubuntu-latest
     if: false
