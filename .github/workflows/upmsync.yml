@@ -22,10 +22,8 @@ jobs:
         run: |
           sudo apt-get install unzip
           rm -rf Staging
-          mkdir Staging
-          cd Staging
           curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
-          unzip content.zip -d .
+          unzip content.zip -d Staging
           rm content.zip
           ls
 
