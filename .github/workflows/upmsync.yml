@@ -33,9 +33,19 @@ jobs:
       - name: List
         run: |
           cd facebook
+          # RESOLVER
           rm -rf UnitySDK/Assets/PlayServicesResolver
+          # TESTS
           rm -rf Facebook.Unity.Tests
-          #rm -rf com.parse.bolts.bolts-tasks-1.4.0.jar.meta
+          # PROPERTIES
+          rm -rf Facebook.Unity.Android/Properties
+          rm -rf Facebook.Unity.Android.StrippingHack/Properties
+          rm -rf Facebook.Unity.Canvas/Properties
+          rm -rf Facebook.Unity.Editor/Properties
+          rm -rf Facebook.Unity.Gameroom/Properties
+          rm -rf Facebook.Unity.IOS/Properties
+          rm -rf Facebook.Unity.IOS.StrippingHack/Properties
+          rm -rf Facebook.Unity.IOS.Settings/Properties
           ls
 
       - name: Copy
