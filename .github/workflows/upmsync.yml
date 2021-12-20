@@ -36,10 +36,12 @@ jobs:
 
       - name: Copy
         run: |
+          rm -rf base/Staging/
+          mkdir base/Staging/
           cp -rf facebook/* base/Staging/
           cd base/Staging
           ls
-          
+
   disabled:
     runs-on: ubuntu-latest
     if: false
