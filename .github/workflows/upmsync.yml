@@ -3,7 +3,11 @@ on:
   push:
     branches:
       - 'main'
+      - 'feature/automate-release'
   workflow_dispatch:
+env:
+  base: https://github.com/facebook/facebook-sdk-for-unity/archive/refs/tags/sdk-version-
+  version: 11.0.0
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,9 +17,28 @@ jobs:
         run: |
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
+
+      - name: Download Package
+        run: |
+          rm -rf Staging
+          mkdir Staging
+          cd Staging
+          curl ${{ env.base }}-${{ env.version }}.tar.gz --output content.tar.gz
+          tar -xvzf content.tgz
+          rm content.tgz
+          ls
+
+  disabled:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - name: Install DiffUtils
+        if: false
+        run:
           sudo apt-get install diffutils
       
       - name: Update README
+        if: false
         run: |
           if ! cmp --silent "README.md" "Assets/Package/README.md"; then
               echo "different"
@@ -26,12 +49,14 @@ jobs:
           fi
 
       - name: Cook UPM
+        if: false
         run: |
           git subtree split -P Assets/Package/ -b upm
           git checkout upm
           ls
 
       - name: Push changes
+        if: false
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
