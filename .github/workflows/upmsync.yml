@@ -42,6 +42,10 @@ jobs:
           rm -rf ${{ env.target }}
           mkdir ${{ env.target }}
           cp -rf facebook/* ${{ env.target }}
+          ${{ env.target }}/UnitySDK/Assets/PlayServicesResolver
+        
+      - name: Commit
+        run: |
           cd base
           if [[ `git status --porcelain` ]]; then
               git add --a
