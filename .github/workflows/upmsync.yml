@@ -46,6 +46,7 @@ jobs:
           rm -rf Facebook.Unity.IOS/Properties
           rm -rf Facebook.Unity.IOS.StrippingHack/Properties
           rm -rf Facebook.Unity.IOS.Settings/Properties
+          rm -rf Facebook.Unity.Settings/Properties
           ls
 
       - name: Copy
