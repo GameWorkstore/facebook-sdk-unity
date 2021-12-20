@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: facebook/facebook-sdk-for-unity
-          ref: ${{ env.version }}
+          ref: sdk-version-${{ env.version }}
           path: facebook
 
       - name: Config
