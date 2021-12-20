@@ -20,12 +20,13 @@ jobs:
 
       - name: Download Package
         run: |
+          sudo install unzip
           rm -rf Staging
           mkdir Staging
           cd Staging
-          curl ${{ env.base }}-${{ env.version }}.tar.gz --output content.tar.gz
-          tar -xvzf content.tar.gz
-          rm content.tar.gz
+          curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
+          unzip content.zip
+          rm content.zip
           ls
 
   disabled:
