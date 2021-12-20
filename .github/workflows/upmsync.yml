@@ -6,7 +6,7 @@ on:
       - 'feature/automate-release'
   workflow_dispatch:
 env:
-  base: https://github.com/facebook/facebook-sdk-for-unity/archive/refs/tags/sdk-version-
+  base: https://github.com/facebook/facebook-sdk-for-unity/archive/refs/tags/sdk-version
   version: 11.0.0
 jobs:
   build:
