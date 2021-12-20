@@ -56,9 +56,9 @@ jobs:
           rm -rf ${{ env.examples }}
           
           mkdir ${{ env.target }}
-          mkdir ${{ env.examples }}
-
+          
           mv -rf facebook/UnitySDK/Assets/FacebookSDK/Examples base/Assets/
+          
           cp -rf facebook/* ${{ env.target }}
         
       - name: Commit
