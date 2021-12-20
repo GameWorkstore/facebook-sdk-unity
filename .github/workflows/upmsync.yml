@@ -42,7 +42,7 @@ jobs:
           rm -rf ${{ env.target }}
           mkdir ${{ env.target }}
           cp -rf facebook/* ${{ env.target }}
-          ${{ env.target }}/UnitySDK/Assets/PlayServicesResolver
+          rm -rf ${{ env.target }}/UnitySDK/Assets/PlayServicesResolver
         
       - name: Commit
         run: |
