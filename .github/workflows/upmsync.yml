@@ -53,7 +53,12 @@ jobs:
           target: base/Assets/Package/Source/
         run: |
           rm -rf ${{ env.target }}
+          rm -rf ${{ env.examples }}
+          
           mkdir ${{ env.target }}
+          mkdir ${{ env.examples }}
+
+          mv -rf facebook/UnitySDK/Assets/FacebookSDK/Examples base/Assets/
           cp -rf facebook/* ${{ env.target }}
         
       - name: Commit
