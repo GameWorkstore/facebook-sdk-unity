@@ -19,14 +19,16 @@ jobs:
           git config --local user.name "game-workstore-bot"
 
       - name: Download Package
+        env:
+          file: content.tar.gz
         run: |
           sudo apt-get install unzip
           rm -rf Staging
           mkdir Staging
           cd Staging
-          curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
+          curl ${{ env.base }}-${{ env.version }}.tar.gz --output ${{ env.file }}
           ls
-          tar -xvf content.zip
+          tar -xvf ${{ env.file }}
           ls
 
   disabled:
