@@ -20,12 +20,12 @@ jobs:
 
       - name: Download Package
         run: |
-          sudo install unzip
+          sudo apt-get install unzip
           rm -rf Staging
           mkdir Staging
           cd Staging
           curl ${{ env.base }}-${{ env.version }}.zip --output content.zip
-          unzip content.zip
+          unzip content.zip -d .
           rm content.zip
           ls
 
