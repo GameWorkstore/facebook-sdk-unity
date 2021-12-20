@@ -37,32 +37,54 @@ jobs:
           rm -rf UnitySDK/Assets/PlayServicesResolver
           # TESTS
           rm -rf Facebook.Unity.Tests
+          # REMOVE
+          rm -rf Facebook.Unity.Android.StrippingHack
+          rm -rf Facebook.Unity.IOS.StrippingHack
           # PROPERTIES
           rm -rf Facebook.Unity.Android/Properties
-          rm -rf Facebook.Unity.Android.StrippingHack
           rm -rf Facebook.Unity.Canvas/Properties
           rm -rf Facebook.Unity.Editor/Properties
           rm -rf Facebook.Unity.Gameroom/Properties
           rm -rf Facebook.Unity.IOS/Properties
-          rm -rf Facebook.Unity.IOS.StrippingHack
-          rm -rf Facebook.Unity.IOS.Settings/Properties
           rm -rf Facebook.Unity.Settings/Properties
+          # OTHERS
           rm -rf com.parse.bolts.bolts-tasks-1.4.0.jar.meta
           ls
 
       - name: Copy
         env:
-          target: base/Assets/Package/Source/
+          target: base/Assets/Package/Source
         run: |
-          rm -rf ${{ env.target }}
+          # Move Examples
           rm -rf base/Assets/Examples
-          
-          mkdir ${{ env.target }}
-
           mv facebook/UnitySDK/Assets/FacebookSDK/Examples base/Assets/
+
+          # Move Source
+          rm -rf ${{ env.target }}/Facebook.Unity.Android/Facebook.Unity.Android
+          rm -rf ${{ env.target }}/Facebook.Unity.Canvas/Facebook.Unity.Canvas
+          rm -rf ${{ env.target }}/Facebook.Unity.Editor/Facebook.Unity.Editor
+          rm -rf ${{ env.target }}/Facebook.Unity.Gameroom/Facebook.Unity.Gameroom
+          rm -rf ${{ env.target }}/Facebook.Unity.IOS/Facebook.Unity.IOS
+          rm -rf ${{ env.target }}/Facebook.Unity.Settings/Facebook.Unity.Settings
           
-          cp -rf facebook/* ${{ env.target }}
-        
+          mkdir ${{ env.target }}/Facebook.Unity.Android/
+          mkdir ${{ env.target }}/Facebook.Unity.Canvas/
+          mkdir ${{ env.target }}/Facebook.Unity.Editor/
+          mkdir ${{ env.target }}/Facebook.Unity.Gameroom/
+          mkdir ${{ env.target }}/Facebook.Unity.IOS/
+          mkdir ${{ env.target }}/Facebook.Unity.Settings/
+
+          mv facebook/Facebook.Unity.Android ${{ env.target }}/
+          mv facebook/Facebook.Unity.Android ${{ env.target }}/
+          mv facebook/Facebook.Unity.Editor/ ${{ env.target }}/
+          mv facebook/Facebook.Unity.Gameroom/ ${{ env.target }}/
+          mv facebook/Facebook.Unity.IOS/ ${{ env.target }}/
+          mv facebook/Facebook.Unity.Settings/ ${{ env.target }}/
+
+          rm -rf ${{ env.target }}/Content
+          mkdir ${{ env.target }}/Content
+          cp -rf facebook/* ${{ env.target }}/Content
+          
       - name: Commit
         run: |
           cd base

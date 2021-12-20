@@ -18,15 +18,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using Facebook.Unity.Settings;
+using UnityEditor;
+using UnityEngine;
+
 namespace Facebook.Unity.Editor
 {
-    using System.Diagnostics;
-    using System.IO;
-    using System.Text;
-    using Facebook.Unity.Settings;
-    using UnityEditor;
-    using UnityEngine;
-
     public class FacebookAndroidUtil
     {
         public const string ErrorNoSDK = "no_android_sdk";

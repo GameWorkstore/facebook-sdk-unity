@@ -17,11 +17,11 @@
       "hash": "acec284154b11e5fa7193b0adfb4c52f682b49f0"
     },
     "com.google.external-dependency-manager": {
-      "version": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.165",
+      "version": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.168",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b10e37b82f8529299553ac48e69d186a60c0fb17"
+      "hash": "4e3ae5303af0d658808f0c45b0c421d2b464f28a"
     },
     "com.unity.collab-proxy": {
       "version": "1.13.5",

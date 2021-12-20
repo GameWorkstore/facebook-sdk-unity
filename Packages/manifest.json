@@ -1,17 +1,8 @@
 {
-  "scopedRegistries": [
-    {
-      "name": "Game Package Registry by Google",
-      "url": "https://unityregistry-pa.googleapis.com",
-      "scopes": [
-        "com.google"
-      ]
-    }
-  ],
   "dependencies": {
     "com.gameworkstore.automation": "git://github.com/GameWorkstore/automation#1.0.8",
     "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns#1.1.2",
-    "com.google.external-dependency-manager": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.165",
+    "com.google.external-dependency-manager": "git://github.com/GameWorkstore/com.google.external-dependency-manager#1.2.168",
     "com.unity.collab-proxy": "1.13.5",
     "com.unity.ide.visualstudio": "2.0.11",
     "com.unity.ide.vscode": "1.2.4",
