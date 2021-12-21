@@ -30,10 +30,14 @@ jobs:
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
 
-      - name: Build SDK
+      - name: Build Android
+        env:
+          PROJECT_ROOT: ${{ github.workspace }}/facebook
+          UNITY_PACKAGE_ROOT: ${{ github.workspace }}/facebook/UnitySDK/
+          SDK_VERSION: ${{ env.version }}
         run: |
           cd facebook
-          ./scripts/setup.sh
+          .scripts/setup_android_unity_plugin.sh
 
       - name: List
         run: |
