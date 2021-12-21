@@ -37,7 +37,7 @@ jobs:
           SDK_VERSION: ${{ env.version }}
         run: |
           cd facebook
-          .scripts/setup_android_unity_plugin.sh
+          ./scripts/setup_android_unity_plugin.sh
 
       - name: List
         run: |
