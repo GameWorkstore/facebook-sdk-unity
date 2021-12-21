@@ -1,7 +1,10 @@
 {
     "name": "Facebook.Unity.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:1f5c11f1fb91f4089976c3aacc79e786",
+        "GUID:6a73d25fa56d645a0b79a0e28513e216"
+    ],
     "includePlatforms": [
         "Editor"
     ],

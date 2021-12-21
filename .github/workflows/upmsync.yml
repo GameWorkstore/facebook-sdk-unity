@@ -30,6 +30,11 @@ jobs:
           git config --local user.email "contact@gameworkstore.com"
           git config --local user.name "game-workstore-bot"
 
+      - name: Build SDK
+        run: |
+          cd facebook/scripts
+          source setup.sh
+
       - name: List
         run: |
           cd facebook

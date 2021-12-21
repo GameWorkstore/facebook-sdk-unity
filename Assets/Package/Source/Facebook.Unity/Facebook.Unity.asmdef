@@ -1,0 +1,16 @@
+{
+    "name": "Facebook.Unity",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1f5c11f1fb91f4089976c3aacc79e786"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

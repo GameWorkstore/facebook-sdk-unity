@@ -1,3 +1,16 @@
 {
-	"name": "Facebook.Unity.Gameroom"
+    "name": "Facebook.Unity.Gameroom",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6a73d25fa56d645a0b79a0e28513e216"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
