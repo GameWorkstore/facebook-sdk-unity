@@ -74,12 +74,12 @@ jobs:
           mkdir -p ${{ env.target }}/Facebook.Unity.IOS/
           mkdir -p ${{ env.target }}/Facebook.Unity.Settings/
 
-          mv facebook/Facebook.Unity.Android ${{ env.target }}/
-          mv facebook/Facebook.Unity.Android ${{ env.target }}/
-          mv facebook/Facebook.Unity.Editor/ ${{ env.target }}/
-          mv facebook/Facebook.Unity.Gameroom/ ${{ env.target }}/
-          mv facebook/Facebook.Unity.IOS/ ${{ env.target }}/
-          mv facebook/Facebook.Unity.Settings/ ${{ env.target }}/
+          mv facebook/Facebook.Unity.Android ${{ env.target }}/Facebook.Unity.Android
+          mv facebook/Facebook.Unity.Canvas ${{ env.target }}/Facebook.Unity.Canvas
+          mv facebook/Facebook.Unity.Editor ${{ env.target }}/Facebook.Unity.Editor
+          mv facebook/Facebook.Unity.Gameroom ${{ env.target }}/Facebook.Unity.Gameroom
+          mv facebook/Facebook.Unity.IOS ${{ env.target }}/Facebook.Unity.IOS
+          mv facebook/Facebook.Unity.Settings ${{ env.target }}/Facebook.Unity.Settings
 
           rm -rf ${{ env.target }}/Content
           mkdir -p ${{ env.target }}/Content
