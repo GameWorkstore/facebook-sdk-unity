@@ -33,7 +33,7 @@ jobs:
       - name: Build SDK
         run: |
           cd facebook/scripts
-          source setup.sh
+          ./setup.sh
 
       - name: List
         run: |
