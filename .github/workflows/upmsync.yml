@@ -60,6 +60,7 @@ jobs:
           mv facebook/UnitySDK/Assets/FacebookSDK/Examples base/Assets/
 
           # Move Source
+          rm -rf ${{ env.target }}/Facebook.Unity/Facebook.Unity
           rm -rf ${{ env.target }}/Facebook.Unity.Android/Facebook.Unity.Android
           rm -rf ${{ env.target }}/Facebook.Unity.Canvas/Facebook.Unity.Canvas
           rm -rf ${{ env.target }}/Facebook.Unity.Editor/Facebook.Unity.Editor
@@ -67,6 +68,7 @@ jobs:
           rm -rf ${{ env.target }}/Facebook.Unity.IOS/Facebook.Unity.IOS
           rm -rf ${{ env.target }}/Facebook.Unity.Settings/Facebook.Unity.Settings
           
+          mkdir -p ${{ env.target }}/Facebook.Unity/
           mkdir -p ${{ env.target }}/Facebook.Unity.Android/
           mkdir -p ${{ env.target }}/Facebook.Unity.Canvas/
           mkdir -p ${{ env.target }}/Facebook.Unity.Editor/
@@ -74,6 +76,7 @@ jobs:
           mkdir -p ${{ env.target }}/Facebook.Unity.IOS/
           mkdir -p ${{ env.target }}/Facebook.Unity.Settings/
 
+          mv facebook/Facebook.Unity ${{ env.target }}/Facebook.Unity
           mv facebook/Facebook.Unity.Android ${{ env.target }}/Facebook.Unity.Android
           mv facebook/Facebook.Unity.Canvas ${{ env.target }}/Facebook.Unity.Canvas
           mv facebook/Facebook.Unity.Editor ${{ env.target }}/Facebook.Unity.Editor

@@ -1,0 +1,18 @@
+{
+    "name": "Facebook.Unity.Old",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c7c0cee0ed55b402ca3136b3d20373d6"
+    ],
+    "includePlatforms": [
+        "PS5"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
