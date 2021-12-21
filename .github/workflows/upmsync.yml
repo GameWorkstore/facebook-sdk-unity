@@ -32,8 +32,8 @@ jobs:
 
       - name: Build SDK
         run: |
-          cd facebook/scripts
-          ./setup.sh
+          cd facebook
+          ./scripts/setup.sh
 
       - name: List
         run: |
